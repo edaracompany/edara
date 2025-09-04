@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آراء العملاء - Edara</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        /* تنسيقات خاصة بصفحة الآراء */
+        .feedback-hero {
+            background: linear-gradient(135deg, #8A2BE2, #6A0DAD);
+            color: white;
+            padding: 100px 5% 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .feedback-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .feedback-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .reviews-section {
+            padding: 80px 5%;
+            background: #f8f9fa;
+        }
+        
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .reviewer-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8A2BE2, #6A0DAD);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+        
+        .reviewer-info {
+            flex: 1;
+        }
+        
+        .reviewer-name {
+            font-weight: 700;
+            color: #6A0DAD;
+            margin-bottom: 5px;
+        }
+        
+        .review-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #FFD700;
+            font-size: 18px;
+        }
+        
+        .review-content {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .add-review-section {
+            padding: 60px 5%;
+            background: white;
+        }
+        
+        .add-review-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f8f5ff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .add-review-title {
+            text-align: center;
+            color: #6A0DAD;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .rating-input {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .rating-stars {
+            direction: ltr;
+            margin-bottom: 10px;
+        }
+        
+        .rating-stars i {
+            font-size: 28px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+            margin: 0 3px;
+        }
+        
+        .rating-stars i:hover,
+        .rating-stars i.active {
+            color: #FFD700;
+        }
+        
+        .rating-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .review-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-review-btn {
+            background: linear-gradient(135deg, #8A2BE2, #6A0DAD);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+            width: 200px;
+        }
+        
+        .submit-review-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+        
+        .thank-you-message {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .add-review-container {
+                padding: 25px;
+            }
+            
+            .feedback-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-logo-text">edara</div>
+            </div>
+            <div class="loading-subtitle">edara company</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="loading-message">جاري تحميل آراء العملاء</div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <!-- الشعار -->
+        <a href="index.html" class="logo">
+            <div class="logo-icon">E</div>
+            <div class="logo-text">edara</div>
+        </a>
+        
+        <!-- قائمة التنقل -->
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="index.html#about">من نحن</a></li>
+            <li><a href="index.html#services">خدماتنا</a></li>
+            <li><a href="index.html#about-company">عن الشركة</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
+            <li><a href="feedback.html" class="active">آراء العملاء</a></li>
+        </ul>
+        
+        <!-- أزرار التنقل -->
+        <div class="nav-buttons">
+            <a href="Registration.html" class="btn btn-login">تسجيل الدخول</a>
+            <a href="Registration.html" class="btn btn-register">حساب جديد</a>
+        </div>
+        
+        <!-- قائمة الجوال -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+    <!-- القائمة الجانبية للجوال -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="index.html#about">من نحن</a></li>
+            <li><a href="index.html#services">خدماتنا</a></li>
+            <li><a href="index.html#about-company">عن الشركة</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
+            <li><a href="feedback.html" class="active">آراء العملاء</a></li>
+        </ul>
+        
+        <div class="mobile-buttons">
+            <a href="Registration.html" class="btn btn-login">تسجيل الدخول</a>
+            <a href="Registration.html" class="btn btn-register">حساب جديد</a>
+        </div>
+    </div>
+    
+    <!-- overlay للخلفية -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- قسم البطل -->
+    <section class="feedback-hero">
+        <h1>آراء عملائنا الكرام</h1>
+        <p>نحن نعتز بكل رأي يصلنا من عملائنا، فهو يساعدنا على التحسن المستمر وتقديم خدمات أفضل تلبي توقعاتكم</p>
+    </section>
+
+    <!-- قسم عرض الآراء -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2 class="section-title">آراء العملاء</h2>
+            <div class="reviews-grid" id="reviewsContainer">
+                <!-- سيتم إضافة الآراء ديناميكيًا باستخدام JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم إضافة رأي جديد -->
+    <section class="add-review-section">
+        <div class="add-review-container">
+            <h2 class="add-review-title">أضف رأيك</h2>
+            <form class="review-form" id="reviewForm">
+                <div class="form-group">
+                    <label for="reviewerName" class="form-label">الاسم</label>
+                    <input type="text" id="reviewerName" class="form-input" placeholder="اسمك" required>
+                </div>
+                
+                <div class="rating-input">
+                    <span class="rating-label">التقييم</span>
+                    <div class="rating-stars">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="ratingValue" value="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewText" class="form-label">رأيك</label>
+                    <textarea id="reviewText" class="form-input" placeholder="اكتب رأيك عن خدماتنا هنا..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-review-btn">إضافة الرأي</button>
+            </form>
+            
+            <div class="thank-you-message" id="thankYouMessage">
+                <i class="fas fa-check-circle"></i>
+                <p>شكراً لك على مشاركة رأيك! تمت إضافته بنجاح.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <!-- نفس الفوتر الموجود في index.html -->
+    </footer>
+
+    <script>
+        // كود JavaScript للتحكم في شاشة التحميل والقائمة (مشابه لindex.js)
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const body = document.body;
+            
+            body.classList.add('loading');
+            
+            setTimeout(function() {
+                loadingScreen.style.opacity = '0';
+                body.classList.remove('loading');
+                body.classList.add('loaded');
+                
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 2000);
+            
+            // تحميل الآراء المحفوظة
+            loadReviews();
+            
+            // إعداد نظام التقييم
+            setupRatingStars();
+            
+            // إعداد نموذج إضافة الرأي
+            setupReviewForm();
+        });
+        
+        // تحميل الآراء من localStorage
+        function loadReviews() {
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            const reviews = JSON.parse(localStorage.getItem('customerReviews')) || [];
+            
+            if (reviews.length === 0) {
+                reviewsContainer.innerHTML = `
+                    <div class="no-reviews" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="far fa-comments" style="font-size: 60px; color: #8A2BE2; margin-bottom: 20px;"></i>
+                        <h3 style="color: #6A0DAD;">لا توجد آراء حتى الآن</h3>
+                        <p style="color: #777;">كن أول من يشارك رأيه عن خدماتنا</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // عرض الآراء بترتيب زمني عكسي (الأحدث أولاً)
+            reviews.reverse().forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-card';
+                
+                // توليد النجوم حسب التقييم
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= review.rating) {
+                        starsHtml += '<i class="fas fa-star"></i>';
+                    } else {
+                        starsHtml += '<i class="far fa-star"></i>';
+                    }
+                }
+                
+                // الحرف الأول من الاسم للصورة الرمزية
+                const firstLetter = review.name.charAt(0);
+                
+                reviewElement.innerHTML = `
+                    <div class="review-header">
+                        <div class="reviewer-avatar">${firstLetter}</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">${review.name}</div>
+                            <div class="review-date">${review.date}</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">${starsHtml}</div>
+                    <div class="review-content">${review.text}</div>
+                `;
+                
+                reviewsContainer.appendChild(reviewElement);
+            });
+        }
+        
+        // إعداد نظام النجوم للتقييم
+        function setupRatingStars() {
+            const stars = document.querySelectorAll('.rating-stars i');
+            const ratingValue = document.getElementById('ratingValue');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    ratingValue.value = rating;
+                    
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                            s.classList.remove('far');
+                            s.classList.add('fas', 'active');
+                        } else {
+                            s.classList.remove('fas', 'active');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                            s.classList.remove('far');
+                            s.classList.add('fas');
+                        } else {
+                            s.classList.remove('fas');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    const currentRating = parseInt(ratingValue.value);
+                    
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-rating')) <= currentRating) {
+                            s.classList.remove('far');
+                            s.classList.add('fas', 'active');
+                        } else {
+                            s.classList.remove('fas', 'active');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+            });
+        }
+        
+        // إعداد نموذج إضافة الرأي
+        function setupReviewForm() {
+            const form = document.getElementById('reviewForm');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('reviewerName').value;
+                const rating = parseInt(document.getElementById('ratingValue').value);
+                const text = document.getElementById('reviewText').value;
+                
+                if (rating === 0) {
+                    alert('يرجى اختيار تقييم من خلال النجوم');
+                    return;
+                }
+                
+                // الحصول على التاريخ الحالي
+                const now = new Date();
+                const date = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
+                
+                // إنشاء كائن الرأي
+                const review = {
+                    name: name,
+                    rating: rating,
+                    text: text,
+                    date: date
+                };
+                
+                // حفظ الرأي في localStorage
+                let reviews = JSON.parse(localStorage.getItem('customerReviews')) || [];
+                reviews.push(review);
+                localStorage.setItem('customerReviews', JSON.stringify(reviews));
+                
+                // إظهار رسالة الشكر
+                thankYouMessage.style.display = 'block';
+                
+                // إعادة تعيين النموذج
+                form.reset();
+                
+                // إعادة تعيين النجوم
+                const stars = document.querySelectorAll('.rating-stars i');
+                stars.forEach(star => {
+                    star.classList.remove('fas', 'active');
+                    star.classList.add('far');
+                });
+                document.getElementById('ratingValue').value = 0;
+                
+                // إعادة تحميل الآراء بعد ثانيتين
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            });
+        }
+    </script>
+    
+</body>
+</html>

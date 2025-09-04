@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edara - شركة ادارة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+     <!-- شاشة التحميل -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                
+                <div class="loading-logo-text">edara</div>
+            </div>
+            <div class="loading-subtitle">edara company</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="loading-message">إدارة أعمالك تبدأ مع ادارة</div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <!-- الشعار -->
+        <a href="index.html" class="logo">
+            <div class="logo-icon">E</div>
+            <div class="logo-text">edara</div>
+        </a>
+        
+        <!-- قائمة التنقل -->
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#about-company">عن الشركة</a></li>
+            <li><a href="#mot">قيمنا الأساسية</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+        
+        <!-- أزرار التنقل -->
+        <div class="nav-buttons">
+            <a href="Registration.html" class="btn btn-login">تسجيل الدخول</a>
+            <a href="Registration.html" class="btn btn-register">حساب جديد</a>
+        </div>
+        
+        <!-- قائمة الجوال -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+    <!-- القائمة الجانبية للجوال -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#about-company">عن الشركة</a></li>
+            <li><a href="#mot">قيمنا الأساسية</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+        
+        <div class="mobile-buttons">
+            <a href="Registration.html" class="btn btn-login">تسجيل الدخول</a>
+            <a href="Registration.html" class="btn btn-register">حساب جديد</a>
+        </div>
+    </div>
+    
+    <!-- overlay للخلفية -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- قسم من نحن -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2 class="section-title">من نحن</h2>
+                <p class="about-text">
+                    شركة <strong>Edara</strong> للبرمجيات هي شركة رائدة في مجال تطوير الحلول البرمجية والتقنية. تأسست عام 2023 بهدف تقديم حلول مبتكرة وذات جودة عالية تلبي احتياجات العملاء في مختلف القطاعات.
+                </p>
+                <p class="about-text">
+                    نحن نؤمن بأن التكنولوجيا هي المستقبل، ونسعى دائمًا لمواكبة أحدث التطورات في مجال البرمجة وتطوير الويب وتطبيقات الجوال. يتميز فريقنا بالخبرة والكفاءة والقدرة على تنفيذ المشاريع بكفاءة عالية.
+                </p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="feature-text">حلول مبتكرة</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="feature-text">التسليم في الوقت المحدد</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-text">فريق محترف</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-text">دعم فني متكامل</div>
+                    </div>
+                </div>
+                
+                <a href="#about-company" class="cta-button">اكتشف المزيد عنا</a>
+            </div>
+            
+            <div class="about-image">
+                <div class="animated-image">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                    <div class="main-object"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <div class="services-header">
+                <h2 class="section-title">خدماتنا</h2>
+                <p class="section-text">
+                    نقدم في Edara مجموعة متكاملة من الحلول البرمجية المصممة خصيصًا لتعزيز كفاءة عملك وزيادة مبيعاتك. نحن نعمل على تطوير أنظمة مخصصة تلبي جميع احتياجاتك التقنية.
+                </p>
+            </div>
+            
+            <div class="services-content">
+                <!-- شبكة التطبيقات -->
+                <div class="apps-grid">
+                    <!-- تطبيق 1 -->
+                    <div class="app-card" id="online-store-app">
+                        <div class="app-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="app-title">متجر الكتروني</h3>
+                    </div>
+                    
+                    <!-- تطبيق 2 -->
+                    <div class="app-card" id="sales-system-app">
+                        <div class="app-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="app-title">نظام مبيعات</h3>
+                    </div>
+                    
+                    <!-- تطبيق 3 -->
+                    <div class="app-card" id="sales-system-appp">
+                        <div class="app-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="app-title">نظام محاسبة</h3>
+                    </div>
+                    
+                    <!-- تطبيق 4 -->
+                    <div class="app-card" id="sales-system-apppp">
+                        <div class="app-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <h3 class="app-title">نظام مخازن</h3>
+                    </div>
+                    
+                    <!-- تطبيق 5 -->
+                    <div class="app-card" id="sales-system-appppp">
+                        <div class="app-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3 class="app-title">نظام حلاقة</h3>
+                    </div>
+                    
+                    <!-- تطبيق 6 -->
+                    <div class="app-card" id="sales-system-apppppp">
+                        <div class="app-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="app-title">نظام إدارة مدارس</h3>
+                    </div>
+                    
+                    <!-- تطبيق 7 -->
+                    <div class="app-card" id="sales-system-appppppp">
+                        <div class="app-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="app-title">منصات تعليمية</h3>
+                    </div>
+                    
+                    <!-- تطبيق 8 -->
+                    <div class="app-card" id="sales-system-apppppppp">
+                        <div class="app-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="app-title">نظام HR</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="services-image">
+                <div class="cartoon-image">
+                    <div class="cartoon-element cartoon-server">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="cartoon-element cartoon-laptop">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="cartoon-element cartoon-chart">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="cartoon-element cartoon-phone">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="cartoon-element cartoon-cloud">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- قسم عن الشركة -->
+    <section class="about-company-section" id="about-company">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">عن شركة Edara</h2>
+                <p class="section-subtitle">
+                    رحلة تميز وإبداع في عالم البرمجيات والتقنية، نصنع المستقبل الرقمي بابتكاراتنا وحلولنا المتكاملة
+                </p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        تأسست شركة <strong>Edara</strong> للبرمجيات في عام 2023 برؤية طموحة لتكون رائدة في مجال تطوير الحلول البرمجية والتقنية في المنطقة. انطلقنا بفريق صغير من المطورين المبدعين الذين آمنوا بقوة التكنولوجيا وقدرتها على تغيير العالم.
+                    </p>
+                    
+                    <p>
+                        على مر السنوات، نمت شركتنا لتصبح واحدة من أبرز الشركات الرقمية التي تقدم حلولاً متكاملة ومبتكرة للعملاء في مختلف القطاعات. نحن نفتخر ببناء شراكات طويلة الأمد مع عملائنا، حيث نعمل جنباً إلى جنب لتحقيق أهدافهم ونجاحهم.
+                    </p>
+                    
+                    <p>
+                        في Edara، نؤمن بأن التكنولوجيا هي الوسيلة لتحقيق التحول الرقمي وليس الغاية بحد ذاتها. لذلك نركز على فهم احتياجات عملائنا العميقة وتقديم حلول تلبي توقعاتهم وتتجاوزها، مع الحفاظ على أعلى معايير الجودة والأداء.
+                    </p>
+                </div>
+                
+                <div class="about-image">
+                    <div class="company-image">
+                           <img src="c:\Users\merod\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\92426B262D11B0ADE77387CF8416E153\صورة واتساب بتاريخ 2025-09-04 في 01.00.57_1b2d8dfb.jpg" alt=""style="width: 100%; height: 300px; background: linear-gradient(135deg, #8A2BE2, #6A0DAD); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                        </div>
+                </div>
+            </div>
+            
+            <!-- البطاقات الإحصائية -->
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-number" data-count="2">2+</div>
+                    <div class="stat-text">مدت نشأت الشركة</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-number" data-count="150">150+</div>
+                    <div class="stat-text">مشروع ناجح</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" data-count="50">50+</div>
+                    <div class="stat-text">عميل راضٍ</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="stat-number" data-count="25">25+</div>
+                    <div class="stat-text">مطور محترف</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قيم الشركة -->
+        <div class="container" id="mot">
+            <div class="values-section">
+                <div class="section-header">
+                    <h2 class="section-title">قيمنا الأساسية</h2>
+                    <p class="section-subtitle">
+                        المبادئ التي نؤمن بها ونسير عليها في كل ما نقدمه من أعمال وخدمات
+                    </p>
+                </div>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>الابتكار</h3>
+                        <p>نحن نبتكر حلولاً غير تقليدية تتحدى الوضع الراهن وتخلق قيمة حقيقية لعملائنا</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3>الجودة</h3>
+                        <p>نلتزم بأعلى معايير الجودة في كل منتج نقدمه وخدمة نقدمها لعملائنا</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>الشراكة</h3>
+                        <p>نعمل كشريك حقيقي مع عملائنا، نهتم بنجاحهم كما نهتم بنجاحنا</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>الموثوقية</h3>
+                        <p>نحن نفي بوعودنا ونحافظ على ثقة عملائنا في كل الأوقات</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>التطوير المستمر</h3>
+                        <p>نتعلم ونتطور باستمرار لمواكبة أحدث التقنيات وأفضل الممارسات</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>الشغف</h3>
+                        <p>نحن نحب ما نفعله، وهذا الشغف ينعكس على جودة عملنا وعلاقاتنا</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+    </section>
+<div class="container">
+<!-- قسم التواصل -->
+        <section class="contact-section" id="contact">
+            <div class="section-header">
+                <h2 class="section-title">تواصل معنا</h2>
+                <p class="section-subtitle">
+                نحن هنا لمساعدتك! تواصل معنا لأي استفسار أو لطلب خدمة، وسنكون سعداء بالرد عليك في أقرب وقت ممكن.
+                </p>
+            </div>
+            
+            <div class="contact-form">
+                <h3 class="form-title">أرسل لنا رسالة</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">الاسم الكامل</label>
+                        <input type="text" id="name" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-input" placeholder="أدخل بريدك الإلكتروني" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">كلمة المرور</label>
+                        <input type="password" id="password" class="form-input" placeholder="أدخل كلمة المرور" required>
+                        <span class="password-toggle" id="passwordToggle">
+                            <i class="far fa-eye"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">رقم الهاتف</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="أدخل رقم هاتفك" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">الرسالة</label>
+                        <textarea id="message" class="form-input" rows="4" placeholder="أدخل رسالتك هنا..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">إرسال الرسالة</button>
+                </form>
+                
+               <div class="social-mediaa">
+                        <a href="#" class="social-iconn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-iconn"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-iconn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-iconn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <span>+01553453491</span>
+                    </div>
+                    <i class="fas fa-phone info-icon"></i>
+                        <span>+01068917371</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope info-icon"></i>
+                        <span>edara.com</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+   <!-- في نهاية قسم الفوتر قبل إغلاق </footer> -->
+<div class="feedback-button-container">
+    <a href="feedback.html" class="feedback-btn">
+        <i class="fas fa-comment-dots"></i>
+        استطلاع الآراء
+    </a>
+</div>
+    <br><br>
+    <!-- زر واتساب -->
+<a href="https://wa.me/1234567890" id="whatsappBtn" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<!-- زر الانتقال إلى الأعلى -->
+<button id="scrollToTopBtn" class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+    <!-- التذييل (Footer) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- العمود الأول: عن الشركة -->
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">E</div>
+                        <div class="footer-logo-text">edara</div>
+                    </div>
+                
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- العمود الثاني: روابط سريعة -->
+                <div class="footer-column">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> الرئيسية</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> من نحن</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> خدماتنا</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> مشاريعنا</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <!-- العمود الثالث: خدماتنا -->
+                <div class="footer-column">
+                    <h3 class="footer-title">خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> متجر إلكتروني</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> نظام محاسبة</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> نظام مخازن</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> نظام حلاقة</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> أنظمة إدارة</a></li>
+                    </ul>
+                </div>
+                
+                <!-- العمود الرابع: اتصل بنا -->
+                <div class="footer-column">
+                    <h3 class="footer-title">اتصل بنا</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>مصر / المهندسين , شارع شهاب</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+01553453491</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>edara.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>الأحد - الخميس: 12 صباحاً - 1 مساءً</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- الجزء السفلي من التذييل -->
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 Edara. جميع الحقوق محفوظة.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">سياسة الخصوصية</a>
+                    <a href="#">شروط الخدمة</a>
+                    <a href="#">سياسة الاسترجاع</a>
+                    <a href="#">خريطة الموقع</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+ 
+                     <script src="js/index.js"></script>
+</body>
+</html>
