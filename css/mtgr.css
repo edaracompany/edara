@@ -704,7 +704,258 @@
                 transform: translateY(-20px) rotate(10deg);
             }
         }
-        
+        /* قسم معرض الأعمال */
+.portfolio-section {
+    padding: 80px 5%;
+    background: linear-gradient(135deg, #f9f7ff 0%, #f1ebff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.portfolio-title {
+    font-size: 2.5rem;
+    color: #6A0DAD;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    font-weight: 800;
+}
+
+.portfolio-title:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #8A2BE2, #6A0DAD);
+    border-radius: 2px;
+}
+
+.portfolio-subtitle {
+    color: #6c757d;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 30px auto 0;
+    line-height: 1.6;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.portfolio-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(138, 43, 226, 0.2);
+}
+
+.portfolio-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-image {
+    transform: scale(1.05);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(106, 13, 173, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-link {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8A2BE2;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.portfolio-link:hover {
+    transform: scale(1.1);
+    background: #8A2BE2;
+    color: white;
+}
+
+.portfolio-info {
+    padding: 20px;
+}
+
+.portfolio-item-title {
+    font-size: 1.2rem;
+    color: #6A0DAD;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.portfolio-item-desc {
+    color: #777;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.portfolio-item-link {
+    display: inline-block;
+    color: #8A2BE2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.portfolio-item-link:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: #8A2BE2;
+    transition: width 0.3s ease;
+}
+
+.portfolio-item-link:hover {
+    color: #6A0DAD;
+}
+
+.portfolio-item-link:hover:after {
+    width: 100%;
+}
+
+/* التجاوب مع الشاشات المتوسطة */
+@media (max-width: 992px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .portfolio-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* التجاوب مع الشاشات الصغيرة (جوال) */
+@media (max-width: 768px) {
+    .portfolio-section {
+        padding: 60px 4%;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .portfolio-title {
+        font-size: 1.8rem;
+    }
+    
+    .portfolio-subtitle {
+        font-size: 1rem;
+    }
+    
+    .portfolio-image-container {
+        height: 160px;
+    }
+    
+    .portfolio-info {
+        padding: 15px;
+    }
+    
+    .portfolio-item-title {
+        font-size: 1.1rem;
+    }
+    
+    .portfolio-item-desc {
+        font-size: 0.85rem;
+    }
+}
+
+/* التجاوب مع الشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .portfolio-image-container {
+        height: 140px;
+    }
+    
+    .portfolio-info {
+        padding: 12px;
+    }
+    
+    .portfolio-item-title {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+    
+    .portfolio-item-desc {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .portfolio-item-link {
+        font-size: 0.85rem;
+    }
+    
+    .portfolio-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
         /* التجاوب مع الشاشات الصغيرة */
         @media (max-width: 992px) {
             .service-content {
