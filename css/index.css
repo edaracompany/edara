@@ -376,24 +376,24 @@ body.loaded .footer {
             position: relative;
         }
         
-        .section-title {
-            font-size: 2.5rem;
-            color: #6A0DAD;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #8A2BE2, #6A0DAD);
-            border-radius: 2px;
-        }
+       .section-title {
+    font-size: 2.5rem;
+    color: #6A0DAD;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* المسافة الطبيعية لسطح المكتب */
+    right: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #8A2BE2, #6A0DAD);
+    border-radius: 2px;
+}
         
         .about-text {
             color: #555;
@@ -1588,7 +1588,7 @@ body.loaded .footer {
             justify-content: center;
             gap: 15px;
             margin-top: 30px;
-        }
+            margin-right: -100px;        }
         .social-icon {
             text-decoration: none; 
             width: 45px;
@@ -1827,7 +1827,23 @@ body.loaded .footer {
         .footer-bottom-links a:hover {
             opacity: 1;
         }
-        
+  @media (max-width: 768px) {
+    .section-title {
+        display: block;         
+        text-align: center;     
+        margin-left: auto;      
+        margin-right: auto;
+    }
+
+    .section-title:after {
+        left: 50%;              
+        transform: translateX(-50%); 
+        bottom: -6px;              
+        right: auto; /* مهم لتعطيل الـ right */
+    }
+}
+
+
         /* التجاوب مع الشاشات الصغيرة */
         @media (max-width: 992px) {
             .footer-content {
@@ -1875,9 +1891,7 @@ body.loaded .footer {
         }
         /* التجاوب مع الشاشات الصغيرة */
         @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
-            }
+           
             
             .section-subtitle {
                 font-size: 1rem;
