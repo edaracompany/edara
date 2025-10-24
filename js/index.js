@@ -357,6 +357,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const salesSystemApppppp= document.getElementById('sales-system-apppppp');
     const salesSystemAppppppp = document.getElementById('sales-system-appppppp');
     const salesSystemApppppppp = document.getElementById('sales-system-apppppppp');
+        const restaurantmenuapp = document.getElementById('restaurantmenuapp');
+
     // وهكذا لباقي البطاقات...
     
     // إضافة أحداث النقر
@@ -409,7 +411,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         salesSystemApppppppp.style.cursor = 'pointer';
     }
-   
+    if (restaurantmenuapp) {
+        restaurantmenuapp.addEventListener('click', function() {
+            window.location.href = 'QR.html'; // صفحة نظام المبيعات
+        });
+        restaurantmenuapp.style.cursor = 'pointer';
+    }
 });
 // وظيفة الانتقال إلى الأعلى
 const scrollToTopBtn = document.getElementById('scrollToTopBtn');

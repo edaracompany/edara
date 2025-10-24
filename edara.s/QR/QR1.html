@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>على زوقك - قائمة الطعام</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B5A2B;
+            --primary-dark: #6B4423;
+            --primary-light: #B07D4B;
+            --secondary: #D4AF37;
+            --accent: #F8F4E9;
+            --text-dark: #2C1810;
+            --text-light: #FFFFFF;
+            --gray-light: #F5F5F5;
+            --gray: #E0E0E0;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--accent);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            margin-left: 10px;
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+
+        .logo span {
+            background: linear-gradient(to right, var(--secondary), #F9D976);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        nav ul li a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 15px;
+            width: 30px;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(43, 27, 16, 0.7), rgba(43, 27, 16, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 50px;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: #E6B325;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background: var(--text-light);
+            color: var(--primary);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--primary-light));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            padding: 12px 25px;
+            background-color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-btn.active, 
+        .category-btn:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Products Grid */
+        .products-section {
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            padding-right: 15px;
+            border-right: 4px solid var(--secondary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .product-price span {
+            font-size: 1rem;
+            color: var(--primary-light);
+            font-weight: 500;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: var(--text-dark);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            padding: 60px 0 20px;
+            margin-top: 80px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .footer-section p, 
+        .footer-section a {
+            margin-bottom: 12px;
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+            padding-right: 8px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: var(--secondary);
+            width: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+            margin-bottom: 0;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .category-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 80%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation for category filtering */
+        .category-section {
+            transition: var(--transition);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>على زوقك</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">الرئيسية</a></li>
+                        <li><a href="#grilled">المشويات</a></li>
+                        <li><a href="#pastries">المعجنات</a></li>
+                        <li><a href="#juices">العصائر</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم البطل -->
+    <section class="hero">
+        <div class="container">
+            <h1>مطعم على زوقك</h1>
+            <p>أشهى المأكولات المصرية بأجود المكونات وأفضل الأسعار. جودة لا تضاهى وطعم لا يُنسى.</p>
+            <div class="hero-btns">
+                <a href="#grilled" class="btn btn-primary">استعرض القائمة</a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التصنيفات والمنتجات -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">قائمة الطعام</h2>
+            
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th-large"></i> الكل
+                </button>
+                <button class="category-btn" data-category="grilled">
+                    <i class="fas fa-fire"></i> المشويات
+                </button>
+                <button class="category-btn" data-category="pastries">
+                    <i class="fas fa-bread-slice"></i> المعجنات
+                </button>
+                <button class="category-btn" data-category="juices">
+                    <i class="fas fa-glass-whiskey"></i> العصائر
+                </button>
+            </div>
+
+            <!-- قسم المشويات -->
+            <div class="products-section category-section" id="grilled">
+                <h3 class="section-subtitle">المشويات</h3>
+                <div class="products-grid">
+                    <!-- المنتجات سيتم إضافتها ديناميكيًا -->
+                </div>
+            </div>
+
+            <!-- قسم المعجنات -->
+            <div class="products-section category-section" id="pastries">
+                <h3 class="section-subtitle">المعجنات</h3>
+                <div class="products-grid">
+                    <!-- المنتجات سيتم إضافتها ديناميكيًا -->
+                </div>
+            </div>
+
+            <!-- قسم العصائر -->
+            <div class="products-section category-section" id="juices">
+                <h3 class="section-subtitle">العصائر</h3>
+                <div class="products-grid">
+                    <!-- المنتجات سيتم إضافتها ديناميكيًا -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن المطعم</h3>
+                    <p>مطعم "على زوقك" يقدم أشهى المأكولات المصرية بأجود المكونات وأفضل الخدمات، مع الحفاظ على النكهات الأصيلة والذوق الرفيع.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="#">الرئيسية</a>
+                    <a href="#grilled">المشويات</a>
+                    <a href="#pastries">المعجنات</a>
+                    <a href="#juices">العصائر</a>
+                </div>
+                <div class="footer-section">
+                    <h3>اتصل بنا</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>العنوان: مصر، القاهرة، منطقة المطاعم</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <p>الهاتف: 0123456789</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>البريد: info@ala-zowak.com</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-clock"></i>
+                        <p>مواعيد العمل: 10 صباحاً - 12 منتصف الليل</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 مطعم على زوقك</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات المنتجات بالجنيه المصري
+        const products = {
+            grilled: [
+                {
+                    id: 1,
+                    name: "شيش طاووق",
+                    description: "قطع دجاج مشوية مع الخضار والتوابل الخاصة",
+                    price: "85 جنيه",
+                    image: "https://images.unsplash.com/photo-1599921841143-819065a55cc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    badge: "الأكثر طلباً"
+                },
+                {
+                    id: 2,
+                    name: "كبة مشوية",
+                    description: "كبة محشية باللحم والصنوبر ومشوية على الفحم",
+                    price: "95 جنيه",
+                    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 3,
+                    name: "لحم مشوي",
+                    description: "قطع لحم بقري مشوية مع البهارات الخاصة",
+                    price: "120 جنيه",
+                    image: "https://images.unsplash.com/photo-1546964124-0cce460f38ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    badge: "جديد"
+                },
+                {
+                    id: 4,
+                    name: "سمك مشوي",
+                    description: "سمك طازج مشوي مع الليمون والأعشاب",
+                    price: "110 جنيه",
+                    image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 5,
+                    name: "كفتة مشوية",
+                    description: "كفتة لحم مشوية مع البصل والبهارات",
+                    price: "90 جنيه",
+                    image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 6,
+                    name: "شاورما لحم",
+                    description: "شاورما لحم مشوية مع الخضار والصلصة",
+                    price: "75 جنيه",
+                    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 7,
+                    name: "دجاج مشوي كامل",
+                    description: "دجاج كامل مشوي مع الأرز والسلطة",
+                    price: "140 جنيه",
+                    image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    badge: "عرض خاص"
+                },
+                {
+                    id: 8,
+                    name: "كباب حلة",
+                    description: "خليط من اللحم والدجاج المشوي مع الخضار",
+                    price: "130 جنيه",
+                    image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                }
+            ],
+            pastries: [
+                {
+                    id: 1,
+                    name: "مناقيش زعتر",
+                    description: "عجينة طازجة مع زعتر وزيت زيتون",
+                    price: "25 جنيه",
+                    image: "https://assets-global.website-files.com/60d0cf14aa7e44506df942a5/632d39fa06020757b1801b53_Manaqeesh.webp"
+                },
+                {
+                    id: 2,
+                    name: "فطيرة سبانخ",
+                    description: "عجينة محشية بالسبانخ والجبن",
+                    price: "30 جنيه",
+                    image: "https://images.squarespace-cdn.com/content/v1/5f2a1b5c8bb619393fb3cf81/1598676706596-HEIGIB42SC3YRQ5W62WK/IMG_1004.JPG",
+                    badge: "جديد"
+                },
+                {
+                    id: 3,
+                    name: "فطيرة جبن",
+                    description: "عجينة محشية بمزيج من الأجبان",
+                    price: "28 جنيه",
+                    image: "https://www.canaangardens.com/wp-content/uploads/2018/06/chee.jpg"
+                },
+                {
+                    id: 4,
+                    name: "فطيرة لحم",
+                    description: "عجينة محشية باللحم المفروم والبهارات",
+                    price: "35 جنيه",
+                    image: "https://tse3.mm.bing.net/th/id/OIP.yZjKqvGTVunoKLic6soudwHaFP?rs=1&pid=ImgDetMain&o=7&rm=3"
+                },
+                {
+                    id: 5,
+                    name: "فطيرة زعتر وجبن",
+                    description: "مزيج رائع من الزعتر والجبن على عجينة طازجة",
+                    price: "32 جنيه",
+                    image: "https://th.bing.com/th/id/R.f94bf385de7ee0de6b9a584451b4089f?rik=Wl2ueWjMjwJhow&riu=http%3a%2f%2fwww.atyabtabkha.com%2ftachyon%2fsites%2f2%2f2021%2f10%2fae0ed6abf36c5e39a89121f05366f4d0b4f7c48f.jpg&ehk=6hWPZsiO6A2bbPkrm%2b7xA26JOw57Vl0jrjbmOBQzLeo%3d&risl=&pid=ImgRaw&r=0",
+                    badge: "الأكثر طلباً"
+                },
+                {
+                    id: 6,
+                    name: "فطيرة سجق",
+                    description: "عجينة محشية بالسجق والبهارات",
+                    price: "33 جنيه",
+                    image: "https://tse1.mm.bing.net/th/id/OIP.7X6K3RpvogQWveendT-j7QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+                },
+                {
+                    id: 7,
+                    name: "فطيرة خضار",
+                    description: "عجينة محشية بمزيج من الخضار الطازجة",
+                    price: "26 جنيه",
+                    image: "https://www.3ql.com/wp-content/uploads/2022/06/b978e951b41815348ff0b4dbe5753fa9.png"
+                },
+                {
+                    id: 8,
+                    name: "فطيرة مشكلة",
+                    description: "مزيج من الجبن والزعتر واللحم على عجينة طازجة",
+                    price: "40 جنيه",
+                    image: "https://tse1.mm.bing.net/th/id/OIP.A-1dVA4q87TNcWSrB1Z4KAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+                    badge: "عرض خاص"
+                }
+            ],
+            juices: [
+                {
+                    id: 1,
+                    name: "عصير برتقال طازج",
+                    description: "عصير برتقال طازج مع قطع البرتقال",
+                    price: "25 جنيه",
+                    image: "https://tse1.mm.bing.net/th/id/OIP.D2r6UzznYdtosRe1_E0shQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
+                },
+                {
+                    id: 2,
+                    name: "عصير فراولة",
+                    description: "عصير فراولة طازج مع قطع الفراولة",
+                    price: "30 جنيه",
+                    image: "https://static.wixstatic.com/media/1a3811_d2d7e14ec09a446484b88febf4748843~mv2.jpg/v1/fill/w_444,h_310,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Image-place-holder.jpg",
+                    badge: "جديد"
+                },
+                {
+                    id: 3,
+                    name: "عصير مانجو",
+                    description: "عصير مانجو طازج مع قطع المانجو",
+                    price: "35 جنيه",
+                    image: "https://shamlola.s3.amazonaws.com/Shamlola_Images/9/src/c098eafda39f0780d77965739d17b95d8d8741d1.jpg"
+                },
+                {
+                    id: 4,
+                    name: "عصير أناناس",
+                    description: "عصير أناناس طازج مع قطع الأناناس",
+                    price: "32 جنيه",
+                    image: "https://th.bing.com/th/id/R.4ef4560106f9f172f12181c6a9f55585?rik=2eZqw2w%2b22%2fmaA&pid=ImgRaw&r=0"
+                },
+                {
+                    id: 5,
+                    name: "عصير موز بالحليب",
+                    description: "مزيج من الموز الطازج والحليب",
+                    price: "28 جنيه",
+                    image: "https://static.tnn.in/thumb/msid-95996986,thumbsize-19034,width-1280,height-720,resizemode-75/95996986.jpg",
+                    badge: "الأكثر طلباً"
+                },
+                {
+                    id: 6,
+                    name: "عصير تفاح",
+                    description: "عصير تفاح طازج مع قطع التفاح",
+                    price: "26 جنيه",
+                    image: "https://tse1.mm.bing.net/th/id/OIP.ja6Qdr7dSZoFW7D5nYMcNwHaE8?w=2122&h=1415&rs=1&pid=ImgDetMain&o=7&rm=3"
+                },
+                {
+                    id: 7,
+                    name: "عصير كيوي",
+                    description: "عصير كيوي طازج مع قطع الكيوي",
+                    price: "34 جنيه",
+                    image: "https://tse2.mm.bing.net/th/id/OIP.GqsV0FoA9aOHP2-oK5ySGwHaE_?rs=1&pid=ImgDetMain&o=7&rm=3"
+                },
+                {
+                    id: 8,
+                    name: "عصير مشكل",
+                    description: "مزيج من الفواكه الطازجة الموسمية",
+                    price: "40 جنيه",
+                    image: "https://herkitchenstories.com/wp-content/uploads/2025/02/drivexmidjourney_Strawberry_Banana_Smoothie_Recipe_Amateur_phot_3b60423a-50a3-40e6-8840-95f7271394a9.webp",
+                    badge: "عرض خاص"
+                }
+            ]
+        };
+
+        // دالة لإنشاء بطاقة المنتج
+        function createProductCard(product) {
+            const badge = product.badge ? `<div class="product-badge">${product.badge}</div>` : '';
+            
+            return `
+                <div class="product-card fade-in">
+                    ${badge}
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-price">${product.price}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // دالة لتحميل المنتجات حسب التصنيف
+        function loadProducts(category) {
+            const grilledSection = document.querySelector('#grilled .products-grid');
+            const pastriesSection = document.querySelector('#pastries .products-grid');
+            const juicesSection = document.querySelector('#juices .products-grid');
+            
+            // إفراغ الأقسام أولاً
+            grilledSection.innerHTML = '';
+            pastriesSection.innerHTML = '';
+            juicesSection.innerHTML = '';
+            
+            // إظهار أو إخفاء الأقسام حسب التصنيف المحدد
+            const grilledElement = document.getElementById('grilled');
+            const pastriesElement = document.getElementById('pastries');
+            const juicesElement = document.getElementById('juices');
+            
+            if (category === 'all' || category === 'grilled') {
+                grilledElement.classList.remove('hidden');
+                products.grilled.forEach(product => {
+                    grilledSection.innerHTML += createProductCard(product);
+                });
+            } else {
+                grilledElement.classList.add('hidden');
+            }
+            
+            if (category === 'all' || category === 'pastries') {
+                pastriesElement.classList.remove('hidden');
+                products.pastries.forEach(product => {
+                    pastriesSection.innerHTML += createProductCard(product);
+                });
+            } else {
+                pastriesElement.classList.add('hidden');
+            }
+            
+            if (category === 'all' || category === 'juices') {
+                juicesElement.classList.remove('hidden');
+                products.juices.forEach(product => {
+                    juicesSection.innerHTML += createProductCard(product);
+                });
+            } else {
+                juicesElement.classList.add('hidden');
+            }
+        }
+
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل جميع المنتجات في البداية
+            loadProducts('all');
+            
+            // إضافة أحداث النقر على أزرار التصنيفات
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // إزالة الفئة النشطة من جميع الأزرار
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // إضافة الفئة النشطة للزر المحدد
+                    this.classList.add('active');
+                    // تحميل المنتجات حسب التصنيف المحدد
+                    const category = this.getAttribute('data-category');
+                    loadProducts(category);
+                    
+                    // التمرير إلى الأعلى عند تغيير التصنيف
+                    window.scrollTo({
+                        top: document.querySelector('.categories').offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // إضافة تأثير التمرير السلس للروابط
+            document.querySelectorAll('nav a, .hero-btns a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        if (targetId !== '#') {
+                            const targetElement = document.querySelector(targetId);
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

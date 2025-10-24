@@ -1,0 +1,107 @@
+<!-- save as index3.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>جمر — المعجنات</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--primary:#c62828;--shadow:0 10px 30px rgba(0,0,0,.08)}
+    body{font-family:'El Messiri',sans-serif;margin:0;padding-top:80px}
+    header{position:fixed;top:0;left:0;right:0;z-index:1100;background:#fff;box-shadow:var(--shadow)}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;padding:18px}
+    .product-card{background:#fff;border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+    .product-image{width:100%;height:200px;object-fit:cover}
+    footer{background:linear-gradient(to right,#8e0000,#c62828);color:#fff;padding:30px 0;margin-top:40px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between py-3">
+        <a href="index.html" class="d-flex align-items-center text-decoration-none">
+          <div class="me-2" style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#8e0000);display:flex;align-items:center;justify-content:center;color:#fff"><i class="fa-solid fa-fire"></i></div>
+          <div class="logo-text" style="font-weight:700;color:var(--primary)">جم<span style="color:#ffab00">ر</span></div>
+        </a>
+        <nav class="d-none d-md-block">
+          <ul class="list-unstyled d-flex align-items-center mb-0">
+            <li class="me-2"><a href="index.html" class="nav-link px-3">الرئيسية</a></li>
+            <li class="me-2"><a href="index2.html" class="nav-link px-3">مشويات</a></li>
+            <li class="me-2"><a href="index3.html" class="nav-link px-3 active">معجنات</a></li>
+            <li class="me-2"><a href="index4.html" class="nav-link px-3">مشروبات/وجبات</a></li>
+          </ul>
+        </nav>
+        <div class="d-flex align-items-center position-relative">
+          <button id="favoritesBtn" class="btn position-relative me-2" data-bs-toggle="offcanvas" data-bs-target="#favoritesOffcanvas" aria-controls="favoritesOffcanvas" style="background:transparent;border:0">
+            <i class="fa-regular fa-heart fa-lg" style="color:var(--primary)"></i>
+            <span class="favorites-count" id="favoritesCount">0</span>
+          </button>
+          <a href="index.html" class="btn btn-outline-secondary">العودة للرئيسية</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-5">
+    <div class="section-title text-center mb-4"><h2>المعجنات</h2><p class="text-muted">معجنات طازجة يوميًا</p></div>
+    <div class="products-grid" id="pastriesGrid"></div>
+  </main>
+
+  <footer><div class="container text-center"><p class="mb-0">© 2025 جمر</p></div></footer>
+
+  <!-- Offcanvas & Modal -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="favoritesOffcanvas" aria-labelledby="favoritesOffcanvasLabel" style="max-width:420px">
+    <div class="offcanvas-header"><h5 class="offcanvas-title">قائمة المفضلة</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><div id="favoritesList" class="d-grid gap-3"></div><div id="emptyFavText" class="text-center text-muted mt-4">لا توجد عناصر في المفضلة بعد</div></div>
+  </div>
+
+  <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-body p-0"><div class="row g-0"><div class="col-md-6"><img id="modalImage" src="" style="width:100%;height:100%;object-fit:cover"></div><div class="col-md-6 p-4"><h4 id="modalTitle"></h4><p id="modalDesc" class="text-muted"></p><h5 id="modalPrice" class="text-danger"></h5><div class="mt-3"><button id="modalFavBtn" class="btn btn-outline-danger me-2"><i class="fa-regular fa-heart"></i> أضف للمفضلة</button><button class="btn btn-primary" data-bs-dismiss="modal">إغلاق</button></div></div></div></div></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const productsData = {
+      pastries:[
+        {id:6,name:"فطيرة سبانخ",price:45,image:"https://elwasfa.com/wp-content/uploads/2017/09/MG_0938-600x400.jpg",description:"فطيرة محشوة بالسبانخ والجبنة"},
+        {id:7,name:"مناقيش زعتر",price:35,image:"https://img.freepik.com/premium-photo/photo-high-quality-details-lebanese-manousheh_933496-20336.jpg",description:"مناقيش طازجة"},
+        {id:8,name:"بيتزا مشكل",price:85,image:"https://tse2.mm.bing.net/th/id/OIP.8dWVS5aG92hYsZ2_Mp7ynQHaGZ?rs=1&pid=ImgDetMain&o=7&rm=3",description:"بيتزا كاملة بالجبنة والصلصة"},
+        {id:9,name:"سمبوسة لحم",price:40,image:"https://kitchen.sayidaty.net/uploads/small/bf/bf93875a7bf30d15ad1fdf2eb988a835_w750_h500.jpg",description:"سمبوسة محشوة باللحم"}
+      ]
+    };
+
+    let favorites = JSON.parse(localStorage.getItem('jm_favorites')||'[]');
+    const pastriesGrid = document.getElementById('pastriesGrid');
+    const favoritesCountEl = document.getElementById('favoritesCount');
+    const favoritesListEl = document.getElementById('favoritesList');
+    const emptyFavText = document.getElementById('emptyFavText');
+
+    const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalFavBtn = document.getElementById('modalFavBtn');
+    let currentModalProductId = null;
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      renderPastries();
+      updateFavoritesUI();
+    });
+
+    function renderPastries(){ pastriesGrid.innerHTML=''; productsData.pastries.forEach(p=>pastriesGrid.appendChild(createCard(p))); }
+    function createCard(p){
+      const card = document.createElement('div'); card.className='product-card'; card.innerHTML = `<img src="${p.image}" class="product-image"><div class="p-3"><div class="d-flex justify-content-between"><div><h6>${p.name}</h6><small class="text-muted">${p.description}</small></div><div class="text-end"><div class="fw-bold text-danger">${p.price} ج.م</div><button class="btn btn-sm btn-link p-0 favorite-small" data-id="${p.id}"><i class="${favorites.includes(p.id)?'fa-solid':'fa-regular'} fa-heart" style="color:var(--primary)"></i></button></div></div></div>`;
+      card.querySelector('.product-image').addEventListener('click',()=>openModal(p.id));
+      card.querySelector('.favorite-small').addEventListener('click',(e)=>{e.stopPropagation(); toggleFavorite(p.id)});
+      return card;
+    }
+    function openModal(id){ const p = productsData.pastries.find(x=>x.id===id); if(!p)return; currentModalProductId=id; modalImage.src=p.image; modalTitle.textContent=p.name; modalDesc.textContent=p.description; modalPrice.textContent=p.price+' ج.م'; updateModalFavBtn(); productModal.show(); }
+    modalFavBtn.addEventListener('click',()=>{ toggleFavorite(currentModalProductId); updateModalFavBtn(); });
+    function toggleFavorite(id){ const idx=favorites.indexOf(id); if(idx===-1) favorites.push(id); else favorites.splice(idx,1); localStorage.setItem('jm_favorites',JSON.stringify(favorites)); updateFavoritesUI(); document.querySelectorAll('[data-id]').forEach(btn=>{ if(parseInt(btn.dataset.id)===id){ const i=btn.querySelector('i'); if(i) i.className = favorites.includes(id)?'fa-solid fa-heart':'fa-regular fa-heart';}}) }
+    function updateModalFavBtn(){ if(favorites.includes(currentModalProductId)){ modalFavBtn.innerHTML='<i class="fa-solid fa-heart"></i> إزالة من المفضلة'; modalFavBtn.classList.remove('btn-outline-danger'); modalFavBtn.classList.add('btn-danger'); } else { modalFavBtn.innerHTML='<i class="fa-regular fa-heart"></i> أضف للمفضلة'; modalFavBtn.classList.add('btn-outline-danger'); modalFavBtn.classList.remove('btn-danger'); } }
+    function updateFavoritesUI(){ favoritesCountEl.textContent=favorites.length; favoritesListEl.innerHTML=''; if(favorites.length===0){ emptyFavText.style.display='block'; return } emptyFavText.style.display='none'; const all = [...productsData.pastries]; favorites.forEach(id=>{ const p = all.find(x=>x.id===id); if(!p) return; const node = document.createElement('div'); node.className='d-flex align-items-center gap-3'; node.innerHTML = `<img src="${p.image}" style="width:64px;height:64px;object-fit:cover;border-radius:8px"><div class="flex-grow-1"><div class="fw-bold">${p.name}</div><div class="text-muted small">${p.price} ج.م</div></div><button class="btn btn-sm btn-outline-danger remove-fav" data-id="${p.id}"><i class="fa-solid fa-trash"></i></button>`; node.addEventListener('click',(e)=>{ if(e.target.closest('.remove-fav')) return; openModal(p.id); const off = bootstrap.Offcanvas.getInstance(document.getElementById('favoritesOffcanvas')); if(off) off.hide(); }); favoritesListEl.appendChild(node); }); favoritesListEl.querySelectorAll('.remove-fav').forEach(btn=>btn.addEventListener('click',(e)=>{ e.stopPropagation(); favorites=favorites.filter(x=>x!==parseInt(btn.dataset.id)); localStorage.setItem('jm_favorites',JSON.stringify(favorites)); updateFavoritesUI(); })); }
+  </script>
+</body>
+</html>
