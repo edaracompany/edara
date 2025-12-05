@@ -894,7 +894,7 @@ body.loaded .footer {
         }
         
         .value-card:hover .value-icon {
-            background: #830583;
+            background: #910292;
             color: white;
         }
         
@@ -1007,7 +1007,85 @@ body.loaded .footer {
             border-radius: 2px;
         }
         
-        
+        /* قسم تواصل معنا الجديد */
+.contact-section2 {
+    padding: 80px 0;
+    margin: 40px 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-container2 {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-title2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #910292;
+    margin-bottom: 10px;
+}
+
+.contact-sub2 {
+    color: #777;
+    margin-bottom: 40px;
+}
+
+.contact-form2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group2 input,
+.form-group2 textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e4d4fb;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    background: #faf8ff;
+    transition: 0.3s;
+}
+
+.form-group2 input:focus,
+.form-group2 textarea:focus {
+    border-color: #910292;
+    background: #fff;
+}
+
+.send-btn2 {
+    padding: 15px;
+    background: #910292;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send-btn2:hover {
+    background: #750075;
+    transform: translateY(-3px);
+}
+
+/* التجاوب */
+@media (max-width: 576px) {
+    .contact-section2 {
+        margin: 20px;
+        padding: 60px 20px;
+    }
+
+    .contact-title2 {
+        font-size: 1.7rem;
+    }
+}
+
         /* زر استطلاع الآراء في الفوتر */
 .feedback-button-container {
     text-align: center;
