@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edara - المتجر الإلكتروني</title>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><!-- قسم تفاصيل الخدمة -->
     <link rel="stylesheet" href="css/mtgr.css">
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 
 </head>
 <body>
@@ -14,7 +18,7 @@
      <!-- شريط التنقل -->
     <nav class="navbar">
         <!-- الشعار -->
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-icon">E</div>
             <div class="logo-text">Edara</div>
         </a>
@@ -29,11 +33,12 @@
             <li><a href="./index.html">تواصل معنا</a></li>
         </ul>
         
-        <!-- أزرار التنقل -->
-        <div class="nav-buttons">
-            <button class="btn btn-login">تسجيل الدخول</button>
-            <button class="btn btn-register">حساب جديد</button>
-        </div>
+           <!-- أزرار التنقل -->
+<div class="nav-buttonss">
+    <p><a href="https://wa.me/01553453491" target="_blank">01553453491</a></p>
+    <p>/</p>
+    <p><a href="https://wa.me/01068917317" target="_blank">01068917317</a></p>
+</div>
         
         <!-- قائمة الجوال -->
         <div class="hamburger" id="hamburger">
@@ -53,11 +58,7 @@
             <li><a href="./index.html">قيمنا الأساسية</a></li>
             <li><a href="./index.html">تواصل معنا</a></li>
         </ul>
-        
-        <div class="mobile-buttons">
-            <button class="btn btn-login">تسجيل الدخول</button>
-            <button class="btn btn-register">حساب جديد</button>
-        </div>
+       
     </div>
     
     <!-- overlay للخلفية -->
@@ -90,106 +91,32 @@
                     </ul>
                 </div>
                 
-                <div class="service-image">
-                    <!-- صورة كرتونية بديلة -->
-                    <img src="img/1.png" alt="المتجر الإلكتروني" class="cartoon-service-img">
-                    
-                    <!-- عناصر عائمة للخلفية -->
-                    <div class="floating-elements">
-                        <div class="floating-element element-1">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="floating-element element-2">
-                            <i class="fas fa-tag"></i>
-                        </div>
-                        <div class="floating-element element-3">
-                            <i class="fas fa-box"></i>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم معرض الأعمال -->
+   <!-- قسم الفيديو بديل معرض الأعمال -->
 <section class="portfolio-section">
     <div class="portfolio-container">
         <div class="portfolio-header">
             <h2 class="portfolio-title">معرض أعمالنا</h2>
-            <p class="portfolio-subtitle">تصفح بعض المتاجر الإلكترونية التي أنشأناها لعملائنا</p>
+            <p class="portfolio-subtitle">شاهد لمحة عن أعمالنا من خلال هذا الفيديو</p>
+        </div>
+
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/VIDEO_ID_HERE" 
+                frameborder="0" 
+                allowfullscreen>
+            </iframe>
         </div>
         
-        <div class="portfolio-grid">
-            <!-- المشروع 1 -->
-            <div class="portfolio-item">
-                <div class="portfolio-image-container">
-                    <img src="img/1.png" alt="متجر إلكتروني" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <a href="img/1.png" target="_blank" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3 class="portfolio-item-title">متجر ورد</h3>
-                    <p class="portfolio-item-desc">متجر متخصص في بيع الورود</p>
-                    <a href="https://example-store1.com" target="_blank" class="portfolio-item-link">زيارة المتجر</a>
-                </div>
-            </div>
-            
-            <!-- المشروع 2 -->
-            <div class="portfolio-item">
-                <div class="portfolio-image-container">
-                    <img src="img/3.png" alt="متجر إلكتروني" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <a href="img/2.png" target="_blank" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3 class="portfolio-item-title">متجر اكسسوارات</h3>
-                    <p class="portfolio-item-desc">متجر يقدم جميع الاكسسوارات  </p>
-                    <a href="img/3.png" target="_blank" class="portfolio-item-link">زيارة المتجر</a>
-                </div>
-            </div>
-            
-            <!-- المشروع 3 -->
-            <div class="portfolio-item">
-                <div class="portfolio-image-container">
-                    <img src="img/2.png" alt="متجر إلكتروني" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <a href="https://example-store3.com" target="_blank" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3 class="portfolio-item-title">متجر ملابس</h3>
-                    <p class="portfolio-item-desc">كل ما تحتاجه مكان واحد</p>
-                    <a href="https://example-store3.com" target="_blank" class="portfolio-item-link">زيارة المتجر</a>
-                </div>
-            </div>
-            
-            <!-- المشروع 4 -->
-            <div class="portfolio-item">
-                <div class="portfolio-image-container">
-                    <img src="img/4.png" alt="متجر إلكتروني" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <a href="https://example-store4.com" target="_blank" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3 class="portfolio-item-title">متجر مكياج</h3>
-                    <p class="portfolio-item-desc">أكبر مجموعة من الميكب لدينا</p>
-                    <a href="https://example-store4.com" target="_blank" class="portfolio-item-link">زيارة المتجر</a>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
+
+
             <!-- قسم الأسعار -->
             <div class="pricing-section">
                 <div class="pricing-header">
@@ -285,7 +212,10 @@
                     </div>
                 </div>
                 
-                <a href="#contact" class="contact-button">اتصل بنا للاستفسار</a>
+                <a href="https://wa.me/201068917317" target="_blank" class="contact-button">
+    اتصل بنا للاستفسار
+</a>
+
             </div>
         </div>
     </section>

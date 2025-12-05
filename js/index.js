@@ -304,48 +304,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, duration / steps);
             });
         });
-         // إظهار وإخفاء كلمة المرور
-        document.getElementById('passwordToggle').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            const icon = this.querySelector('i');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
         
-        // التحقق من صحة النموذج قبل الإرسال
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // التحقق من صحة البريد الإلكتروني
-            const email = document.getElementById('email').value;
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (!emailPattern.test(email)) {
-                alert('يرجى إدخال بريد إلكتروني صحيح');
-                return;
-            }
-            
-            // التحقق من صحة رقم الهاتف
-            const phone = document.getElementById('phone').value;
-            const phonePattern = /^(\+?\d{1,3}[- ]?)?\d{10}$/;
-            
-            if (!phonePattern.test(phone)) {
-                alert('يرجى إدخال رقم هاتف صحيح');
-                return;
-            }
-            
-            // إذا كانت جميع الحقول صحيحة
-            alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.');
-            this.reset();
-        });
+        
+        
         // في JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // تعريف عناصر البطاقات
