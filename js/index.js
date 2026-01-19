@@ -416,3 +416,171 @@ window.addEventListener('load', () => {
         whatsappBtn.classList.add('show');
     }
 });
+
+
+
+
+
+
+
+/* ===============================
+   EDARA CINEMATIC ANIMATION
+   =============================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===============================
+     1️⃣ LOADING SCREEN (سينمائي)
+     =============================== */
+  const loading = document.getElementById("loadingScreen");
+  const progress = document.querySelector(".progress");
+
+  let load = 0;
+  const loadingInterval = setInterval(() => {
+    load += Math.random() * 12;
+    if (load >= 100) {
+      load = 100;
+      clearInterval(loadingInterval);
+      setTimeout(() => {
+        loading.style.opacity = "0";
+        loading.style.pointerEvents = "none";
+        setTimeout(() => loading.remove(), 800);
+      }, 600);
+    }
+    progress.style.width = load + "%";
+  }, 120);
+
+
+  /* ===============================
+     2️⃣ REVEAL ON SCROLL (احترافي)
+     =============================== */
+  const revealElements = document.querySelectorAll(
+    ".section-title, .about-text, .feature, .app-card, .value-card, .stat-card, .contact-container2"
+  );
+
+  const revealObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transform = "translateY(0) scale(1)";
+          entry.target.style.opacity = "1";
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealElements.forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(60px) scale(0.95)";
+    el.style.transition =
+      "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+    revealObserver.observe(el);
+  });
+
+
+  /* ===============================
+     3️⃣ SERVICES CARDS – 3D HOVER
+     =============================== */
+  document.querySelectorAll(".app-card").forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateX = ((y / rect.height) - 0.5) * 15;
+      const rotateY = ((x / rect.width) - 0.5) * -15;
+
+      card.style.transform = `
+        perspective(900px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        scale(1.07)
+      `;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform =
+        "perspective(900px) rotateX(0) rotateY(0) scale(1)";
+    });
+  });
+
+
+  /* ===============================
+     4️⃣ COUNTER ANIMATION (الأرقام)
+     =============================== */
+  const counters = document.querySelectorAll(".stat-number");
+
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const el = entry.target;
+      const target = +el.dataset.count;
+      let count = 0;
+
+      const update = () => {
+        count += Math.ceil(target / 80);
+        if (count >= target) {
+          el.textContent = target + "+";
+        } else {
+          el.textContent = count;
+          requestAnimationFrame(update);
+        }
+      };
+
+      update();
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+
+  counters.forEach(c => counterObserver.observe(c));
+
+
+  /* ===============================
+     5️⃣ PARALLAX ICONS (خدمات)
+     =============================== */
+  document.addEventListener("mousemove", e => {
+    document.querySelectorAll(".cartoon-element").forEach(el => {
+      const speed = el.dataset.speed || 30;
+      const x = (window.innerWidth / 2 - e.clientX) / speed;
+      const y = (window.innerHeight / 2 - e.clientY) / speed;
+
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  });
+
+
+  /* ===============================
+     6️⃣ NAVBAR SCROLL EFFECT
+     =============================== */
+  const navbar = document.querySelector(".navbar");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+      navbar.style.backdropFilter = "blur(12px)";
+      navbar.style.boxShadow = "0 10px 40px rgba(0,0,0,0.3)";
+    } else {
+      navbar.style.backdropFilter = "none";
+      navbar.style.boxShadow = "none";
+    }
+  });
+
+
+  /* ===============================
+     7️⃣ SCROLL TO TOP (ناعم)
+     =============================== */
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+
+  window.addEventListener("scroll", () => {
+    scrollBtn.style.opacity = window.scrollY > 400 ? "1" : "0";
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+});
