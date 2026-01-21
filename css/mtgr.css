@@ -877,7 +877,7 @@
 
 
 /*                                                                                           -------------------------*/
- .nav-buttonss {
+.nav-buttonss {
   display: flex;
   gap: 12px; /* مسافة بين الرقمين */
   padding: 6px 12px;
@@ -905,6 +905,55 @@
 
 .nav-buttonss a:hover {
   transform: scale(1.05);
+}
+
+/* تصميم الجوال فقط - الشاشات الصغيرة */
+@media only screen and (max-width: 768px) {
+  .nav-buttonss {
+    /* تصغير الحجم على الجوال */
+    padding: 5px 10px; /* تقليل الحشوة */
+    gap: 10px; /* تقليل المسافة بين العناصر */
+    font-size: 14px; /* تصغير حجم الخط */
+    font-weight: 600; /* تخفيف سماكة الخط قليلاً */
+    width: auto; /* عرض حسب المحتوى */
+    max-width: 250px; /* تحديد أقصى عرض */
+    margin: 5px auto; /* تقليل الهوامش */
+    box-shadow: 0 1px 4px #910292; /* تقليل الظل */
+  }
+  
+  .nav-buttonss a {
+    min-width: 30px; /* تصغير عرض الأزرار */
+    height: 30px; /* تحديد ارتفاع ثابت */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* للشاشات الصغيرة جداً (هواتف أفقية وصغيرة) */
+@media only screen and (max-width: 480px) {
+  .nav-buttonss {
+    padding: 4px 8px; /* تصغير أكثر للحشوة */
+    gap: 8px; /* تقليل المسافة أكثر */
+    font-size: 13px; /* تصغير الخط أكثر */
+    max-width: 220px; /* عرض أقل */
+    border-radius: 8px; /* زوايا أقل استدارة */
+  }
+  
+  .nav-buttonss a {
+    min-width: 25px; /* تصغير الأزرار أكثر */
+    height: 25px; /* تصغير الارتفاع */
+  }
+}
+
+/* للشاشات الصغيرة جداً جداً (هواتف قديمة) */
+@media only screen and (max-width: 360px) {
+  .nav-buttonss {
+    padding: 3px 6px;
+    gap: 6px;
+    font-size: 12px;
+    max-width: 200px;
+  }
 }
 /* الفيديو */
 .video-wrapper {
@@ -938,7 +987,86 @@
 
 
 
+.portfolio-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
 
+.portfolio-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #910292;
+}
+
+.portfolio-subtitle {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+/* الكارد */
+.video-card {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* أكبر حجم للشاشات الكبيرة */
+    aspect-ratio: 16/9; /* يحافظ على نسبة العرض للارتفاع */
+    margin: auto;
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #111, #333);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    background: linear-gradient(135deg, #222, #444);
+}
+
+/* زر التشغيل */
+.video-card .play-button {
+    width: 25%; /* حجم نسبي للكارِد */
+    max-width: 120px;
+    pointer-events: none;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.video-card:hover .play-button {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 15px rgba(255,0,0,0.8));
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .video-card { max-width: 800px; }
+}
+
+@media (max-width: 992px) {
+    .portfolio-title { font-size: 32px; }
+    .portfolio-subtitle { font-size: 16px; }
+    .video-card { max-width: 700px; }
+}
+
+@media (max-width: 768px) {
+    .portfolio-title { font-size: 28px; }
+    .portfolio-subtitle { font-size: 15px; }
+    .video-card { max-width: 600px; aspect-ratio: 16/9; }
+    .video-card .play-button { max-width: 100px; }
+}
+
+@media (max-width: 480px) {
+    .portfolio-title { font-size: 24px; }
+    .portfolio-subtitle { font-size: 14px; }
+    .video-card { max-width: 100%; height: auto; aspect-ratio: 16/9; }
+    .video-card .play-button { max-width: 80px; }
+}
 
 
 
