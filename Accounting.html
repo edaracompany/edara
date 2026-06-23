@@ -3,40 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edara - نظام المخازن</title>
-
+    <title>Edara - نظام المحاسبة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/mtgr.css">
     <link rel="icon" type="image/jpg" href="logo.jpg">
-
 </head>
 <body>
+
     <!-- شريط التنقل -->
-    <nav class="navbar">
-        <!-- الشعار -->
-        <a href="#" class="logo">
-            <div class="logo-icon">E</div>
-            <div class="logo-text">Edara</div>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="img/logo2.jpg" alt="Edara" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="logo-text">edara</div>
         </a>
         
-        <!-- قائمة التنقل -->
         <ul class="nav-links">
-            <li><a href="./index.html">الرئيسية</a></li>
-            <li><a href="./index.html">من نحن</a></li>
-            <li><a href="./index.html">خدماتنا</a></li>
-            <li><a href="./index.html">عن الشركة</a></li>
-            <li><a href="./index.html">قيمنا الأساسية</a></li>
-            <li><a href="./index.html">تواصل معنا</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="mtgr.html">المتجر الإلكتروني</a></li>
+            <li><a href="sales.html">نظام المبيعات</a></li>
+            <li><a href="Accounting.html" class="active">المحاسبة</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
         </ul>
         
-          <!-- أزرار التنقل -->
-<div class="nav-buttonss">
-    <p><a href="https://wa.me/2001553453491" target="_blank">01553453491</a></p>
-    <p>/</p>
-    <p><a href="https://wa.me/2001068917317" target="_blank">01068917317</a></p>
-</div>
+        <div class="nav-actions">
+            <div class="currency-selector">
+                <button class="currency-btn" id="currencyToggle">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentCurrencySymbol">$</span>
+                </button>
+                <div class="currency-dropdown" id="currencyDropdown">
+                    <div class="currency-option" data-currency="SAR" data-symbol="ر.س">
+                        <span class="currency-flag">🇸🇦</span>
+                        <span>الريال السعودي</span>
+                        <span class="currency-code">SAR</span>
+                    </div>
+                    <div class="currency-option" data-currency="EGP" data-symbol="ج.م">
+                        <span class="currency-flag">🇪🇬</span>
+                        <span>الجنيه المصري</span>
+                        <span class="currency-code">EGP</span>
+                    </div>
+                    <div class="currency-option" data-currency="SYP" data-symbol="ل.س">
+                        <span class="currency-flag">🇸🇾</span>
+                        <span>الليرة السورية</span>
+                        <span class="currency-code">SYP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-buttons">
+                <a href="index.html#login" class="btn btn-login" id="loginBtn">تسجيل الدخول</a>
+                <a href="index.html#signup" class="btn btn-register" id="signupBtn">إنشاء حساب</a>
+            </div>
+        </div>
         
-        <!-- قائمة الجوال -->
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -47,82 +69,75 @@
     <!-- القائمة الجانبية للجوال -->
     <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav-links">
-            <li><a href="./index.html">الرئيسية</a></li>
-            <li><a href="./index.html">من نحن</a></li>
-            <li><a href="./index.html">خدماتنا</a></li>
-            <li><a href="./index.html">عن الشركة</a></li>
-            <li><a href="./index.html">قيمنا الأساسية</a></li>
-            <li><a href="./index.html">تواصل معنا</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="mtgr.html">المتجر الإلكتروني</a></li>
+            <li><a href="sales.html">نظام المبيعات</a></li>
+            <li><a href="Accounting.html" class="active">المحاسبة</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
         </ul>
-        
-      
+        <div class="mobile-auth">
+            <a href="index.html#login" class="btn btn-login">تسجيل الدخول</a>
+            <a href="index.html#signup" class="btn btn-register">إنشاء حساب</a>
+        </div>
     </div>
     
-    <!-- overlay للخلفية -->
     <div class="overlay" id="overlay"></div>
     
     <!-- قسم تفاصيل الخدمة -->
     <section class="service-detail-section">
         <div class="service-detail-container">
             <div class="service-header">
-                <h1 class="service-title">نظام المخازن</h1>
+                <h1 class="service-title">نظام المحاسبة</h1>
                 <p class="service-subtitle">
-                    نظام متكامل لإدارة مخازنك ومستودعاتك بكل كفاءة، تمتع بميزات متقدمة لتتبع المخزون وإدارة الطلبات والتحكم الكامل في عملياتك اللوجستية.
+                    نظام متكامل لإدارة حساباتك المالية، تمتع بميزات إدارة القيود اليومية والميزانيات والتقارير المالية بكل كفاءة واحترافية.
                 </p>
             </div>
             
             <div class="service-content">
                 <div class="service-features">
-                    <h2>مميزات نظام المخازن</h2>
+                    <h2>مميزات نظام المحاسبة</h2>
                     <ul class="features-list">
-                        <li>إدارة متعددة المخازن والمستودعات</li>
-                        <li>تتبع حركة الصناديق والبضائع</li>
-                        <li>إدارة الجرد والتسوية الدورية</li>
-                        <li>تقارير مفصلة عن حالة المخزون</li>
-                        <li>تنبيهات عند نفاذ المخزون</li>
-                        <li>إدارة الموردين والمشتريات</li>
-                        <li>تكامل مع أنظمة المبيعات والمحاسبة</li>
-                        <li>باركود وQR code للمنتجات</li>
-                        <li>لوحة تحكم سهلة الاستخدام</li>
+                        <li>إدارة الحسابات والقيود اليومية</li>
+                        <li>نظام الميزانيات والموازنات</li>
+                        <li>إدارة الأصول الثابتة والإهلاكات</li>
+                        <li>تقارير مالية شاملة</li>
+                        <li>إدارة الضرائب والرسوم</li>
+                        <li>نظام الفواتير الإلكترونية</li>
+                        <li>تكامل مع أنظمة المبيعات والمخازن</li>
+                        <li>إدارة العملات المتعددة</li>
                         <li>تقارير وإحصائيات مفصلة</li>
+                        <li>لوحة تحكم تحليلية</li>
                     </ul>
-                </div>
-                
-                
                 </div>
             </div>
         </div>
     </section>
-         <!-- قسم الفيديو بديل معرض الأعمال -->
-<section class="portfolio-section">
-    <div class="portfolio-container">
-        <div class="portfolio-header">
-            <h2 class="portfolio-title">معرض أعمالنا</h2>
-            <p class="portfolio-subtitle">شاهد لمحة عن أعمالنا من خلال هذا الفيديو</p>
-        </div>
 
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/VIDEO_ID_HERE" 
-                frameborder="0" 
-                allowfullscreen>
-            </iframe>
+    <!-- قسم الفيديو -->
+    <section class="portfolio-section">
+        <div class="portfolio-container">
+            <div class="portfolio-header">
+                <h2 class="portfolio-title">معرض أعمالنا</h2>
+                <p class="portfolio-subtitle">شاهد لمحة عن أعمالنا من خلال هذا الفيديو</p>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- قسم الأسعار -->
     <div class="pricing-section">
         <div class="pricing-header">
             <h2 class="pricing-title">باقات الأسعار</h2>
-            <p class="pricing-subtitle">اختر الباقة المناسبة لعملك واستمتع بنظام مخازن متكامل</p>
+            <p class="pricing-subtitle">اختر الباقة المناسبة لعملك واستمتع بنظام محاسبة متكامل</p>
         </div>
         
         <div class="pricing-options">
-            <!-- الباقة الأساسية -->
             <div class="pricing-card">
                 <div class="pricing-card-header">
                     <h3 class="pricing-card-title">الباقة الأساسية</h3>
-                    <div class="pricing-card-price">6000 جنيه</div>
+                    <div class="pricing-card-price price" data-price="6000" data-currency="EGP">6000 ج.م</div>
                     <div class="pricing-card-period">دفعة واحدة</div>
                 </div>
                 <ul class="pricing-card-features">
@@ -133,14 +148,13 @@
                     <li>دعم فني لمدة 3 أشهر</li>
                     <li>تدريب لمستخدم واحد</li>
                 </ul>
-                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة الأساسية بسعر 6000 جنيه الخاصة بنظام المخازن" class="pricing-card-button">اطلب الآن</a>
+                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة الأساسية بسعر 6000 جنيه" class="pricing-card-button">اطلب الآن</a>
             </div>
             
-            <!-- الباقة المتوسطة -->
             <div class="pricing-card popular">
                 <div class="pricing-card-header">
                     <h3 class="pricing-card-title">الباقة المتوسطة</h3>
-                    <div class="pricing-card-price">10000 جنيه</div>
+                    <div class="pricing-card-price price" data-price="10000" data-currency="EGP">10000 ج.م</div>
                     <div class="pricing-card-period">دفعة واحدة</div>
                 </div>
                 <ul class="pricing-card-features">
@@ -152,14 +166,13 @@
                     <li>تدريب لثلاثة مستخدمين</li>
                     <li>تقارير متقدمة</li>
                 </ul>
-                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة الأساسية بسعر 10000 جنيه الخاصة بنظام المخازن" class="pricing-card-button">اطلب الآن</a>
+                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة المتوسطة بسعر 10000 جنيه" class="pricing-card-button">اطلب الآن</a>
             </div>
             
-            <!-- الباقة المتقدمة -->
             <div class="pricing-card">
                 <div class="pricing-card-header">
                     <h3 class="pricing-card-title">الباقة المتقدمة</h3>
-                    <div class="pricing-card-price">14000 جنيه</div>
+                    <div class="pricing-card-price price" data-price="14000" data-currency="EGP">14000 ج.م</div>
                     <div class="pricing-card-period">دفعة واحدة</div>
                 </div>
                 <ul class="pricing-card-features">
@@ -173,26 +186,30 @@
                     <li>إدارة الموردين والمشتريات</li>
                     <li>نظام تنبيهات متقدم</li>
                 </ul>
-                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة الأساسية بسعر 14000 جنيه الخاصة بنظام المخازن" class="pricing-card-button">اطلب الآن</a>
+                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة المتقدمة بسعر 14000 جنيه" class="pricing-card-button">اطلب الآن</a>
             </div>
         </div>
     </div>
     
-   <!-- قسم الاشتراك -->
+    <!-- قسم الاشتراك -->
     <div class="subscription-section">
-        <h2 class="subscription-title">تواصل معنا لمعرفة التفاصيل </h2>
-        <p class="subscription-text">
-        
+        <h2 class="subscription-title">تواصل معنا لمعرفة التفاصيل</h2>
+        <p class="subscription-text">احصل على نسخة تجريبية مجانية من النظام الآن</p>
         <div class="subscription-options">
             <div class="subscription-option">
-           
-        
-<a href="https://wa.me/201068917317" target="_blank" class="contact-button">
-    اتصل بنا للاستفسار
-</a>
+                <a href="https://wa.me/201068917317" target="_blank" class="contact-button">
+                    <i class="fab fa-whatsapp"></i> اتصل بنا للاستفسار
+                </a>
+            </div>
+            <div class="subscription-option">
+                <button class="contact-button free-demo-btn" data-file="files/accounting-demo.zip" data-system="نظام المحاسبة">
+                    <i class="fas fa-download"></i> طلب نسخة مجانية
+                </button>
+            </div>
+        </div>
     </div>
 
-    
-          <script src="js/mtgr.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/mtgr.js"></script>
 </body>
 </html>

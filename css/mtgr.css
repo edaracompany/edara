@@ -1833,4 +1833,222 @@
                 font-size: 60px;
             }
         }
-   
+   /* زر طلب النسخة المجانية */
+.subscription-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.subscription-option {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    min-width: 200px;
+    transition: all 0.3s ease;
+    border: 2px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscription-option:hover {
+    border-color: #910292;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(138, 43, 226, 0.1);
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #910292, #880388);
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(138, 43, 226, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+}
+
+.contact-button i {
+    font-size: 1.2rem;
+}
+
+/* زر طلب النسخة المجانية - لون مختلف */
+.free-demo-btn {
+    background: linear-gradient(135deg, #25D366, #1DA851);
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+}
+
+.free-demo-btn:hover {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* نافذة التأكيد المخصصة */
+.demo-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.demo-modal-overlay.active {
+    display: flex;
+}
+
+.demo-modal {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 35px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.demo-modal-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #25D366, #1DA851);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+}
+
+.demo-modal h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.demo-modal p {
+    color: #777;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.demo-modal .btn-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.demo-modal .btn-group .btn-download {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #910292, #880388);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.demo-modal .btn-group .btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(145, 2, 146, 0.3);
+}
+
+.demo-modal .btn-group .btn-cancel {
+    padding: 12px 30px;
+    background: #f0f0f0;
+    color: #555;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.demo-modal .btn-group .btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+.demo-modal .close-modal {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.demo-modal .close-modal:hover {
+    color: #333;
+}
+
+/* تحسينات للجوال */
+@media (max-width: 576px) {
+    .subscription-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .subscription-option {
+        width: 100%;
+        max-width: 320px;
+        padding: 15px 20px;
+    }
+    
+    .contact-button {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+    
+    .demo-modal {
+        padding: 30px 20px;
+    }
+    
+    .demo-modal h3 {
+        font-size: 1.3rem;
+    }
+}

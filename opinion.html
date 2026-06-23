@@ -6,37 +6,60 @@
     <title>إدارة - حوّل فكرتك إلى نظام متكامل</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/mtgr.css">
-        <link rel="icon" type="image/jpg" href="logo.jpg">
-
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
+
     <!-- شريط التنقل -->
-    <nav class="navbar">
-        <!-- الشعار -->
+    <nav class="navbar" id="navbar">
         <a href="index.html" class="logo">
-            <div class="logo-icon">E</div>
-            <div class="logo-text">Edara</div>
+            <div class="logo-icon">
+                <img src="img/logo2.jpg" alt="Edara" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="logo-text">edara</div>
         </a>
         
-        <!-- قائمة التنقل -->
         <ul class="nav-links">
-            <li><a href="./index.html">الرئيسية</a></li>
-            <li><a href="./index.html">من نحن</a></li>
-            <li><a href="./index.html">خدماتنا</a></li>
-            <li><a href="./index.html">عن الشركة</a></li>
-            <li><a href="./index.html">قيمنا الأساسية</a></li>
-            <li><a href="./index.html">تواصل معنا</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="mtgr.html">المتجر الإلكتروني</a></li>
+            <li><a href="sales.html">نظام المبيعات</a></li>
+            <li><a href="opinion.html" class="active">حوّل فكرتك</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
         </ul>
         
-        <!-- أزرار التنقل -->
-      <div class="nav-buttonss">
-    <p><a href="https://wa.me/2001553453491" target="_blank">01553453491</a></p>
-    <p>/</p>
-    <p><a href="https://wa.me/2001068917317" target="_blank">01068917317</a></p>
-</div>
+        <div class="nav-actions">
+            <div class="currency-selector">
+                <button class="currency-btn" id="currencyToggle">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentCurrencySymbol">$</span>
+                </button>
+                <div class="currency-dropdown" id="currencyDropdown">
+                    <div class="currency-option" data-currency="SAR" data-symbol="ر.س">
+                        <span class="currency-flag">🇸🇦</span>
+                        <span>الريال السعودي</span>
+                        <span class="currency-code">SAR</span>
+                    </div>
+                    <div class="currency-option" data-currency="EGP" data-symbol="ج.م">
+                        <span class="currency-flag">🇪🇬</span>
+                        <span>الجنيه المصري</span>
+                        <span class="currency-code">EGP</span>
+                    </div>
+                    <div class="currency-option" data-currency="SYP" data-symbol="ل.س">
+                        <span class="currency-flag">🇸🇾</span>
+                        <span>الليرة السورية</span>
+                        <span class="currency-code">SYP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-buttons">
+                <a href="index.html#login" class="btn btn-login" id="loginBtn">تسجيل الدخول</a>
+                <a href="index.html#signup" class="btn btn-register" id="signupBtn">إنشاء حساب</a>
+            </div>
+        </div>
         
-        <!-- قائمة الجوال -->
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -47,19 +70,20 @@
     <!-- القائمة الجانبية للجوال -->
     <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav-links">
-            <li><a href="./index.html">الرئيسية</a></li>
-            <li><a href="./index.html">من نحن</a></li>
-            <li><a href="./index.html">خدماتنا</a></li>
-            <li><a href="./index.html">عن الشركة</a></li>
-            <li><a href="./index.html">قيمنا الأساسية</a></li>
-            <li><a href="./index.html">تواصل معنا</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="mtgr.html">المتجر الإلكتروني</a></li>
+            <li><a href="sales.html">نظام المبيعات</a></li>
+            <li><a href="opinion.html" class="active">حوّل فكرتك</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
         </ul>
-        
-      
+        <div class="mobile-auth">
+            <a href="index.html#login" class="btn btn-login">تسجيل الدخول</a>
+            <a href="index.html#signup" class="btn btn-register">إنشاء حساب</a>
+        </div>
     </div>
     
-    <!-- overlay للخلفية -->
     <div class="overlay" id="overlay"></div>
+
     <!-- قسم المحتوى الرئيسي -->
     <section class="idea-section">
         <div class="idea-container">
@@ -76,25 +100,19 @@
                     
                     <div class="features-grid">
                         <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
+                            <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
                             <h3>تحويل الأفكار إلى واقع</h3>
                             <p>نستمع إلى رؤيتك ونحولها إلى نظام رقمي متكامل يلبي جميع توقعاتك ويتجاوزها، مع الحفاظ على الجوهر الإبداعي لفكرتك الأصلية</p>
                         </div>
                         
                         <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
+                            <div class="feature-icon"><i class="fas fa-cogs"></i></div>
                             <h3>حلول مخصصة</h3>
                             <p>نصمم أنظمة برمجية مصممة خصيصًا لاحتياجات عملك الفريدة، تضمن لك التميز والتفرد في سوقك</p>
                         </div>
                         
                         <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-rocket"></i>
-                            </div>
+                            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
                             <h3>تنفيذ سريع</h3>
                             <p>نضمن لك تقديم حلول سريعة وفعالة دون المساس بجودة المنتج النهائي، لأننا ندرك قيمة الوقت في عالم الأعمال</p>
                         </div>
@@ -135,8 +153,7 @@
         </div>
     </section>
 
-    <script src="js/mtgr.js">
-       
-    </script>
+    <script src="js/index.js"></script>
+    <script src="js/mtgr.js"></script>
 </body>
 </html>

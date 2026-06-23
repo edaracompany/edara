@@ -3,37 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edara - نظام منيو مطاعم QR</title>
+    <title>Edara - نظام المخازن</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/mtgr.css">
     <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
+
     <!-- شريط التنقل -->
-    <nav class="navbar">
-        <!-- الشعار -->
-        <a href="#" class="logo">
-            <div class="logo-icon">E</div>
-            <div class="logo-text">Edara</div>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="img/logo2.jpg" alt="Edara" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="logo-text">edara</div>
         </a>
         
-        <!-- قائمة التنقل -->
         <ul class="nav-links">
-            <li><a href="./index.html">الرئيسية</a></li>
-            <li><a href="./index.html">من نحن</a></li>
-            <li><a href="./index.html">خدماتنا</a></li>
-            <li><a href="./index.html">عن الشركة</a></li>
-            <li><a href="./index.html">قيمنا الأساسية</a></li>
-            <li><a href="./index.html">تواصل معنا</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="mtgr.html">المتجر الإلكتروني</a></li>
+            <li><a href="Warehouses.html" class="active">نظام المخازن</a></li>
+            <li><a href="Accounting.html">المحاسبة</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
         </ul>
         
-         <!-- أزرار التنقل -->
-<div class="nav-buttonss">
-    <p><a href="https://wa.me/2001553453491" target="_blank">01553453491</a></p>
-    <p>/</p>
-    <p><a href="https://wa.me/2001068917317" target="_blank">01068917317</a></p>
-</div>
-        <!-- قائمة الجوال -->
+        <div class="nav-actions">
+            <div class="currency-selector">
+                <button class="currency-btn" id="currencyToggle">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentCurrencySymbol">$</span>
+                </button>
+                <div class="currency-dropdown" id="currencyDropdown">
+                    <div class="currency-option" data-currency="SAR" data-symbol="ر.س">
+                        <span class="currency-flag">🇸🇦</span>
+                        <span>الريال السعودي</span>
+                        <span class="currency-code">SAR</span>
+                    </div>
+                    <div class="currency-option" data-currency="EGP" data-symbol="ج.م">
+                        <span class="currency-flag">🇪🇬</span>
+                        <span>الجنيه المصري</span>
+                        <span class="currency-code">EGP</span>
+                    </div>
+                    <div class="currency-option" data-currency="SYP" data-symbol="ل.س">
+                        <span class="currency-flag">🇸🇾</span>
+                        <span>الليرة السورية</span>
+                        <span class="currency-code">SYP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-buttons">
+                <a href="index.html#login" class="btn btn-login" id="loginBtn">تسجيل الدخول</a>
+                <a href="index.html#signup" class="btn btn-register" id="signupBtn">إنشاء حساب</a>
+            </div>
+        </div>
+        
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -44,90 +69,75 @@
     <!-- القائمة الجانبية للجوال -->
     <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav-links">
-            <li><a href="./index.html">الرئيسية</a></li>
-            <li><a href="./index.html">من نحن</a></li>
-            <li><a href="./index.html">خدماتنا</a></li>
-            <li><a href="./index.html">عن الشركة</a></li>
-            <li><a href="./index.html">قيمنا الأساسية</a></li>
-            <li><a href="./index.html">تواصل معنا</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="mtgr.html">المتجر الإلكتروني</a></li>
+            <li><a href="Warehouses.html" class="active">نظام المخازن</a></li>
+            <li><a href="Accounting.html">المحاسبة</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
         </ul>
-        
-       
+        <div class="mobile-auth">
+            <a href="index.html#login" class="btn btn-login">تسجيل الدخول</a>
+            <a href="index.html#signup" class="btn btn-register">إنشاء حساب</a>
+        </div>
     </div>
     
-    <!-- overlay للخلفية -->
     <div class="overlay" id="overlay"></div>
     
     <!-- قسم تفاصيل الخدمة -->
     <section class="service-detail-section">
         <div class="service-detail-container">
             <div class="service-header">
-                <h1 class="service-title">نظام منيو مطاعم QR</h1>
+                <h1 class="service-title">نظام المخازن</h1>
                 <p class="service-subtitle">
-                    نظام رقمي حديث لإدارة قوائم الطعام في المطاعم والمقاهي عبر رمز QR، حيث يمكن للزبائن تصفح المنيو، الطلب مباشرة، والدفع بكل سهولة من هواتفهم.
+                    نظام متكامل لإدارة مخازنك ومستودعاتك بكل كفاءة، تمتع بميزات متقدمة لتتبع المخزون وإدارة الطلبات والتحكم الكامل في عملياتك اللوجستية.
                 </p>
             </div>
             
             <div class="service-content">
                 <div class="service-features">
-                    <h2>مميزات نظام منيو مطاعم QR</h2>
-                 <ul class="features-list">
-    <li>منيو رقمي بتصميم احترافي متوافق مع هواتف العملاء</li>
-    <li>عرض الأصناف والأسعار والعروض بسهولة</li>
-    <li>إمكانية إضافة صور ووصف لكل صنف</li>
-    <li>لوحة تحكم لإدارة المنتجات والفئات</li>
-    <li>استضافة مجانية حسب مدة الباقة</li>
-    <li>نطاق مجاني مدى الحياة</li>
-    <li>شهادة SSL مجانية مدى الحياة</li>
-    <li>دعم فني حسب مدة الباقة لتعديلات وخدمات أخرى</li>
-    <li>QR للمنيو مع ستاند مجاني حسب الباقة</li>
-    <li>عدد الأصناف يختلف حسب الباقة (٣٠ – ٥٠ – غير محدودة)</li>
-</ul>
-                </div>
-                
-                
+                    <h2>مميزات نظام المخازن</h2>
+                    <ul class="features-list">
+                        <li>إدارة متعددة المخازن والمستودعات</li>
+                        <li>تتبع حركة الصناديق والبضائع</li>
+                        <li>إدارة الجرد والتسوية الدورية</li>
+                        <li>تقارير مفصلة عن حالة المخزون</li>
+                        <li>تنبيهات عند نفاذ المخزون</li>
+                        <li>إدارة الموردين والمشتريات</li>
+                        <li>تكامل مع أنظمة المبيعات والمحاسبة</li>
+                        <li>باركود وQR code للمنتجات</li>
+                        <li>لوحة تحكم سهلة الاستخدام</li>
+                        <li>تقارير وإحصائيات مفصلة</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    
-<!-- قسم الفيديو النهائي ومتجاوب -->
-<section class="portfolio-section">
-    <div class="portfolio-container">
-        <div class="portfolio-header">
-            <h2 class="portfolio-title">معرض أعمالنا</h2>
-            <p class="portfolio-subtitle">شاهد لمحة عن أعمالنا من خلال هذا الفيديو</p>
-        </div>
 
-        <a href="https://www.youtube.com/watch?v=MV8xiCgCrew" target="_blank">
-            <div class="video-card">
-                <div class="play-button">
-                    <!-- أيقونة تشغيل يوتيوب -->
-                    <svg width="100%" height="100%" viewBox="0 0 68 48">
-                        <path d="M66.52,7.06c-0.72-2.7-2.84-4.8-5.54-5.54C56.03,0.5,34,0.5,34,0.5s-22.03,0-26.98,0.99
-                        c-2.7,0.72-4.82,2.84-5.54,5.54C0.5,12.01,0.5,24,0.5,24s0,11.99,1.98,16.94c0.72,2.7,2.84,4.82,5.54,5.54C11.97,47.5,34,47.5,34,47.5
-                        s22.03,0,26.98-0.99c2.7-0.72,4.82-2.84,5.54-5.54C67.5,35.99,67.5,24,67.5,24S67.5,12.01,66.52,7.06z" fill="#FF0000"/>
-                        <polygon points="27,14 27,34 45,24" fill="#fff"/>
-                    </svg>
-                </div>
+    <!-- قسم الفيديو -->
+    <section class="portfolio-section">
+        <div class="portfolio-container">
+            <div class="portfolio-header">
+                <h2 class="portfolio-title">معرض أعمالنا</h2>
+                <p class="portfolio-subtitle">شاهد لمحة عن أعمالنا من خلال هذا الفيديو</p>
             </div>
-        </a>
-    </div>
-</section>
-    
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- قسم الأسعار -->
     <div class="pricing-section">
         <div class="pricing-header">
             <h2 class="pricing-title">باقات الأسعار</h2>
-            <p class="pricing-subtitle">اختر الباقة المناسبة لمطعمك واستمتع بتجربة منيو رقمية متطورة</p>
+            <p class="pricing-subtitle">اختر الباقة المناسبة لعملك واستمتع بنظام مخازن متكامل</p>
         </div>
         
         <div class="pricing-options">
-            <!-- الباقة الأساسية -->
             <div class="pricing-card">
                 <div class="pricing-card-header">
                     <h3 class="pricing-card-title">الباقة الأساسية</h3>
-                    <div class="pricing-card-price">1500 جنيه</div>
+                    <div class="pricing-card-price price" data-price="1500" data-currency="EGP">1500 ج.م</div>
                     <div class="pricing-card-period">دفعة واحدة</div>
                 </div>
                 <ul class="pricing-card-features">
@@ -136,16 +146,15 @@
                     <li>استضافة مجانية لمدة شهر</li>
                     <li>نطاق مجاني مدى الحياة</li>
                     <li>SSL مجاني مدى الحياة</li>
-                    <li>دعم فني لمدة شهر (تعديلات وخدمات أخرى)</li>
+                    <li>دعم فني لمدة شهر</li>
                 </ul>
-                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة الأساسية بسعر 1500 جنيه الخاصة بنظام منيو المطاعم" class="pricing-card-button">اطلب الآن</a>
+                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة الأساسية بسعر 1500 جنيه" class="pricing-card-button">اطلب الآن</a>
             </div>
             
-            <!-- الباقة المتوسطة -->
             <div class="pricing-card popular">
                 <div class="pricing-card-header">
                     <h3 class="pricing-card-title">الباقة المتوسطة</h3>
-                    <div class="pricing-card-price">2300 جنيه</div>
+                    <div class="pricing-card-price price" data-price="2300" data-currency="EGP">2300 ج.م</div>
                     <div class="pricing-card-period">دفعة واحدة</div>
                 </div>
                 <ul class="pricing-card-features">
@@ -155,47 +164,50 @@
                     <li>نطاق مجاني مدى الحياة</li>
                     <li>SSL مجاني مدى الحياة</li>
                     <li>ستاند QR مجاني كهدية</li>
-                    <li>دعم فني لمدة ٣ أشهر (تعديلات وخدمات أخرى)</li>
+                    <li>دعم فني لمدة ٣ أشهر</li>
                 </ul>
-                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة المتوسطة بسعر 2300 جنيه بنظام منيو المطاعم" class="pricing-card-button">اطلب الآن</a>
+                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة المتوسطة بسعر 2300 جنيه" class="pricing-card-button">اطلب الآن</a>
             </div>
             
-            <!-- الباقة المتقدمة -->
             <div class="pricing-card">
                 <div class="pricing-card-header">
                     <h3 class="pricing-card-title">الباقة المتقدمة</h3>
-                    <div class="pricing-card-price">3300 جنيه</div>
+                    <div class="pricing-card-price price" data-price="3300" data-currency="EGP">3300 ج.م</div>
                     <div class="pricing-card-period">دفعة واحدة</div>
                 </div>
                 <ul class="pricing-card-features">
                     <li>QR للمنيو</li>
-                    <li>لوحة تحكم (منتجات، أصناف، فئات غير محدودة)</li>
+                    <li>لوحة تحكم كاملة</li>
                     <li>استضافة مجانية لمدة ٦ أشهر</li>
                     <li>نطاق مجاني مدى الحياة</li>
                     <li>SSL مجاني مدى الحياة</li>
                     <li>دعم فني لمدة ٦ أشهر</li>
-                    <li>٣ ستاندات QR مجانية كهدية</li>
+                    <li>٣ ستاندات QR مجانية</li>
                 </ul>
-                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة المتقدمة بسعر 3300 جنيه الخاصة بنظام منيو المطاعم" class="pricing-card-button">اطلب الآن</a>
+                <a href="https://wa.me/201068917317?text=مرحباً، أريد الاستفسار عن الباقة المتقدمة بسعر 3300 جنيه" class="pricing-card-button">اطلب الآن</a>
             </div>
         </div>
     </div>
     
-  <!-- قسم الاشتراك -->
+    <!-- قسم الاشتراك -->
     <div class="subscription-section">
-        <h2 class="subscription-title">تواصل معنا لمعرفة التفاصيل </h2>
-        <p class="subscription-text">
-        
+        <h2 class="subscription-title">تواصل معنا لمعرفة التفاصيل</h2>
+        <p class="subscription-text">احصل على نسخة تجريبية مجانية من النظام الآن</p>
         <div class="subscription-options">
             <div class="subscription-option">
-           
-        
-<a href="https://wa.me/201068917317" target="_blank" class="contact-button">
-    اتصل بنا للاستفسار
-</a>
+                <a href="https://wa.me/201068917317" target="_blank" class="contact-button">
+                    <i class="fab fa-whatsapp"></i> اتصل بنا للاستفسار
+                </a>
+            </div>
+            <div class="subscription-option">
+                <button class="contact-button free-demo-btn" data-file="files/warehouses-demo.zip" data-system="نظام المخازن">
+                    <i class="fas fa-download"></i> طلب نسخة مجانية
+                </button>
+            </div>
+        </div>
     </div>
 
-    
+    <script src="js/index.js"></script>
     <script src="js/mtgr.js"></script>
 </body>
 </html>
